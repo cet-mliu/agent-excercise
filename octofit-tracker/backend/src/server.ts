@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import './config/database';
-import { PORT, API_BASE_URL } from './config/appConfig';
+import { PORT, API_BASE_URL } from './config/appConfig'; 
 import usersRouter from './routes/users';
 import activitiesRouter from './routes/activities';
 
