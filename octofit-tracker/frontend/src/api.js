@@ -12,10 +12,10 @@ if (!codespaceName) {
   )
 }
 
-export async function fetchCollection(resource) {
-  const response = await fetch(`${API_BASE_URL}/api/${resource}/`)
+export async function fetchCollection(endpoint) {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`)
   if (!response.ok) {
-    throw new Error(`Failed to fetch ${resource}: ${response.status} ${response.statusText}`)
+    throw new Error(`Failed to fetch ${endpoint}: ${response.status} ${response.statusText}`)
   }
   const data = await response.json()
   // Support both paginated ({ results: [...] }) and plain array responses.

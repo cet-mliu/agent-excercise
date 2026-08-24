@@ -18,7 +18,7 @@ function getColumns(items) {
   return [...keys].filter((key) => !HIDDEN_KEYS.has(key))
 }
 
-export default function DataTable({ resource, title }) {
+export default function DataTable({ endpoint, title }) {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -29,7 +29,7 @@ export default function DataTable({ resource, title }) {
     setLoading(true)
     setError(null)
 
-    fetchCollection(resource)
+    fetchCollection(endpoint)
       .then((data) => {
         if (!cancelled) setItems(data)
       })
@@ -43,7 +43,7 @@ export default function DataTable({ resource, title }) {
     return () => {
       cancelled = true
     }
-  }, [resource])
+  }, [endpoint])
 
   const columns = getColumns(items)
 
