@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-const codespaceName = import.meta.env.VITE_CODESPACE_NAME || process.env.CODESPACE_NAME;
-const baseUrl = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev`
-  : 'http://localhost:8000';
+// API endpoint: -8000.app.github.dev/api/activities
+const CODESPACE_HOST = window.location.hostname.replace(/-\d+\.app\.github\.dev$/, '-8000.app.github.dev');
+const API_BASE = `https://${CODESPACE_HOST}/api/activities`;
 function Activities() {
   const [activities, setActivities] = useState([]);
   const [error, setError] = useState(null);
   useEffect(() => {
-    fetch(`${baseUrl}/api/activities`)
+    fetch(API_BASE)
       .then((res) => res.json())
       .then((data) => setActivities(data))
       .catch((err) => setError(err.message));
