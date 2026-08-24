@@ -1,5 +1,5 @@
 import DataTable from './DataTable'
 
 export default function Workouts() {
-  return <DataTable resource="workouts" title="Workouts" />
+  return <div>/api/workouts/</div>//<DataTable resource="workouts" title="Workouts" />
 }
